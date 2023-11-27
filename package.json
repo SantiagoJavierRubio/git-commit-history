@@ -1,8 +1,8 @@
 {
-  "name": "turborepo-empty-starter",
+  "name": "git-commit-history",
   "version": "1.0.0",
   "private": true,
-  "description": "An empty Turborepo starter",
+  "description": "A commit visualization webapp",
   "main": "index.js",
   "scripts": {
     "build": "turbo build",
@@ -16,5 +16,11 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "eslint-config-custom": "*",
+    "prettier-config-custom": "*",
+    "prettier": "^3.1.0",
+    "turbo": "^1.10.16"
+  }
 }
