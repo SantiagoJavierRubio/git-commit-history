@@ -13,6 +13,9 @@ coverage
 .DS_Store
 *.pem
 
+# dist
+dist/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
