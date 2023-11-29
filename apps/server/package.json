@@ -20,6 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@anatine/zod-openapi": "^2.2.1",
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.1.1",
     "@nestjs/core": "^10.0.0",
@@ -27,7 +28,7 @@
     "@nestjs/swagger": "^7.1.16",
     "octokit": "^3.1.2",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.1"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
@@ -58,8 +59,13 @@
       "json",
       "ts"
     ],
-    "modulePaths": ["<rootDir>"],
-    "moduleDirectories": ["node_modules", "src"],
+    "modulePaths": [
+      "<rootDir>"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"

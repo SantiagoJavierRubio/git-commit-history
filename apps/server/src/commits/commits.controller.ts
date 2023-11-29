@@ -1,12 +1,17 @@
 import { Controller, Get, Param } from '@nestjs/common'
-import { ApiTags, ApiParam } from '@nestjs/swagger'
+import { ApiTags, ApiParam, ApiOkResponse } from '@nestjs/swagger'
 import { CommitsService } from './commits.service'
+import { commitApiSchema } from './commit.entity'
 
 @ApiTags('commits')
 @Controller('commits')
 export class CommitsController {
   constructor(private readonly service: CommitsService) {}
 
+  @ApiOkResponse({
+    schema: commitApiSchema,
+    isArray: true
+  })
   @Get()
   async getAll() {
     return await this.service.getAllCommits()
