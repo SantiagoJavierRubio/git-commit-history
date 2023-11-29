@@ -19,8 +19,8 @@ describe('Commits controller', () => {
 
   describe('getAll', () => {
     it('Should return array of commits', async () => {
-      jest.spyOn(commitsService, 'getAllCommits').mockImplementation(() => commitListMock as ReturnType<typeof commitsService.getAllCommits>)
-      expect((await commitsController.getAll())).toBe(await commitListMock)
+      jest.spyOn(commitsService, 'getAllCommits').mockImplementation(async () => commitListMock)
+      expect((await commitsController.getAll())).toBe(commitListMock)
     })
   })
 })

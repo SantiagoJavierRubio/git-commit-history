@@ -7,17 +7,19 @@ export class CommitsService {
   constructor(private readonly octokit: OctokitClient, private readonly configService: ConfigService) {}
 
   async getAllCommits() {
-    return this.octokit.getClient().request('GET /repos/{owner}/{repo}/commits', {
+    const response = await this.octokit.getClient().request('GET /repos/{owner}/{repo}/commits', {
       owner: this.configService.get<string>('repo.owner'),
       repo: this.configService.get<string>('repo.name')
     })
+    return response.data
   }
 
   async getById(ref: string) {
-    return this.octokit.getClient().request('GET /repos/{owner}/{repo}/commits/{ref}', {
+    const response = await this.octokit.getClient().request('GET /repos/{owner}/{repo}/commits/{ref}', {
       owner: this.configService.get<string>('repo.owner'),
       repo: this.configService.get<string>('repo.name'),
       ref
     })
+    return response.data
   }
 }

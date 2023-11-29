@@ -1,5 +1,5 @@
-export const commitListMock = new Promise((resolve, reject) => resolve({
-  data: [{
+export const commitListMock =
+  [{
     sha: 'bd75cf8acc664414df895ed5d623c3426b167321',
     node_id: 'C_kwDOKy00BNoAKGJkNzVjZjhhY2M2NjQ0MTRkZjg5NWVkNWQ2MjNjMzQyNmIxNjczMjE',
     commit: {
@@ -83,5 +83,3 @@ export const commitListMock = new Promise((resolve, reject) => resolve({
       }
     ]
   }]
-})
-)
