@@ -6,6 +6,8 @@ export default function Home() {
     queryKey: ['commits'],
     queryFn: getCommits
   })
+
+  // eslint-disable-next-line no-console
   console.log(isLoading, error, data, isFetching)
   return (
     <div>Home</div>
