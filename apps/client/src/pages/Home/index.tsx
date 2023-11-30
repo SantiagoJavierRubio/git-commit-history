@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { CommitListElement } from 'types'
 import CommitTable from './CommitTable/CommitTable'
 import Container from '@/common/Container'
+import Loader from '@/common/Loader'
 
 export default function Home() {
   const commitQuery = useQuery<CommitListElement[]>({
@@ -11,6 +12,6 @@ export default function Home() {
   })
 
   return (
-    <Container>{commitQuery.isSuccess ? <CommitTable commits={commitQuery.data} /> : <h1>loadin</h1>}</Container>
+    <Container>{commitQuery.isSuccess ? <CommitTable commits={commitQuery.data} /> : <Loader />}</Container>
   )
 }

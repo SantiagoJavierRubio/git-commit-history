@@ -14,24 +14,23 @@ type AvatarCellProps = {
     profile_url: string
 } & PropsWithChildren<HTMLAttributes<HTMLDivElement>>
 export function AvatarCell({ url, alt, profile_url, ...props }: AvatarCellProps) {
-    return (
-        <Cell className='p-0 aspect-square h-8 cursor-pointer' {...props}>
-          <a href={profile_url} target='_blank' referrerPolicy='no-referrer'>
-            <img src={url} alt={alt} className=' object-fill rounded-full'/>
+  return (
+        <Cell className='p-0 aspect-square h-8 cursor-pointer group' {...props}>
+          <a href={profile_url} target='_blank' referrerPolicy='no-referrer' rel="noreferrer">
+            <img src={url} alt={alt} className=' object-fill rounded-full group-hover:scale-110 transition-all'/>
           </a>
         </Cell>
-    )
+  )
 }
-
 
 type LinkCellProps = {
   url: string
 } & PropsWithChildren<HTMLAttributes<HTMLDivElement>>
 export function LinkCell({ url, ...props }: LinkCellProps) {
   return (
-    <Cell className='cursor-pointer' {...props}>
-      <a href={url} target='_blank' referrerPolicy='no-referrer'>
-        <Eye />
+    <Cell className='cursor-pointer group' {...props}>
+      <a href={url} target='_blank' referrerPolicy='no-referrer' rel="noreferrer">
+        <Eye className='group-hover:stroke-[2.5] group-hover:scale-105 transition-all stroke-textDark group-hover:stroke-textLight' />
       </a>
     </Cell>
   )
