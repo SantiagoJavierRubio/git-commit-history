@@ -1,4 +1,4 @@
-import { HttpException, Injectable, InternalServerErrorException } from '@nestjs/common'
+import { Injectable, InternalServerErrorException } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { OctokitClient } from 'src/octokit/octokitClient'
 import { commitList } from './commit.entity'

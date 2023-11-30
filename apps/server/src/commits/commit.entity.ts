@@ -30,6 +30,7 @@ export const basicCommitSchema = z.object({
 
 export const commitList = z.array(basicCommitSchema)
 
+export type CommitListElement = z.infer<typeof basicCommitSchema>
 export type CommitList = z.infer<typeof commitList>
 
 export const commitApiSchema = generateSchema(basicCommitSchema)

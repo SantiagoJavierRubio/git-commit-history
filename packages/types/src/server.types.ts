@@ -1,1 +1,1 @@
-export type { CommitList } from '../../../apps/server/src/commits/commit.entity'
+export type { CommitList, CommitListElement } from '../../../apps/server/src/commits/commit.entity'
