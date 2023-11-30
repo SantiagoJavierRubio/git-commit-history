@@ -8,12 +8,11 @@ export class CommitsService {
   constructor(private readonly octokit: OctokitClient, private readonly configService: ConfigService) {}
 
   async getAllCommits() {
-    const response = await this.octokit.getClient().request('GET /repos/{owner}/{repo}/commits', {
+    const response = await this.octokit.getClient().paginate('GET /repos/{owner}/{repo}/commits', {
       owner: this.configService.get<string>('repo.owner'),
       repo: this.configService.get<string>('repo.name')
-    })
-    if (response.status !== 200) throw new HttpException('Github client error', response.status)
-    const parsed = commitList.safeParse(response.data)
+    }).catch(err => { throw new InternalServerErrorException(err) })
+    const parsed = commitList.safeParse(response)
     if (parsed.success) return parsed.data
     else throw new InternalServerErrorException('Github response did not match parameters')
   }
