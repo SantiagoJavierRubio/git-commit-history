@@ -8,7 +8,8 @@
     "build": "turbo build",
     "lint": "turbo lint",
     "dev": "turbo dev",
-    "test": "turbo test"
+    "test": "turbo test",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "tknickman",
@@ -22,6 +23,7 @@
     "eslint-config-custom": "*",
     "prettier-config-custom": "*",
     "prettier": "^3.1.0",
-    "turbo": "^1.10.16"
+    "turbo": "^1.10.16",
+    "husky": "^8.0.0"
   }
 }
