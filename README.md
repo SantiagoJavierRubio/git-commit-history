@@ -1,4 +1,6 @@
 # Git commit history
+### Fullstack webapp to show commit history of a single repo. Built with NestJS and React
+
 Take-Home test made for Fulltimeforce selection process
 
 ## Instructions
@@ -6,21 +8,21 @@ Start by cloning this repo
 ```
 git clone https://github.com/SantiagoJavierRubio/git-commit-history.git
 ```
-Go to new repo folder
+Then access new repo folder
 ```
 cd git-commit-history
 ```
-Create env from example file
+After that create a .env from [example](.env.example) file
 ```
 copy .env.example .env
 ```
 
-### Fill out .env fields
+### Fill out your new .env fields
 > *CLIENT_PORT* --> localhost port to run client app 
 > 
-> **SERVER_PORT** --> localhost port to run nest app -> **mandatory**
+> **SERVER_PORT** --> localhost port to run nest app -> **required**
 > 
-> **GITHUB_TOKEN** --> your own token [(More info)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) -> **mandatory**
+> **GITHUB_TOKEN** --> your own github token [(More info)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) -> **required**
 >
 > *REPO_OWNER* --> leave empty to use this repository's data, else add the owner name of the repo you want to use
 >
@@ -29,13 +31,9 @@ copy .env.example .env
 Install packages
 ```
 yarn
-
 # or
-
 npm install
-
 # or
-
 pnpm install
 ```
 
@@ -43,14 +41,12 @@ Run app
 ```
 yarn dev
 # or
-
 npm run dev
 # or
-
 pnpm dev
 ```
 
-And both client and server should be available at http://localhost:\<Your configured ports>
+And both client and server should be available at http://localhost: \<Your configured ports>
 
 [screenshot](screenshot.png)
 
