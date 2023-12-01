@@ -20,11 +20,11 @@
     "packages/*"
   ],
   "devDependencies": {
+    "eslint": "^8.54.0",
     "dotenv-cli": "^7.3.0",
     "eslint-config-custom": "*",
     "husky": "^8.0.0",
     "prettier": "^3.1.0",
-    "prettier-config-custom": "*",
     "turbo": "^1.10.16"
   }
 }
