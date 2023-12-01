@@ -7,7 +7,7 @@
   "scripts": {
     "build": "turbo build",
     "lint": "turbo lint",
-    "dev": "turbo dev",
+    "dev": "dotenv -- turbo dev",
     "test": "turbo test",
     "prepare": "husky install"
   },
@@ -20,10 +20,11 @@
     "packages/*"
   ],
   "devDependencies": {
+    "dotenv-cli": "^7.3.0",
     "eslint-config-custom": "*",
-    "prettier-config-custom": "*",
+    "husky": "^8.0.0",
     "prettier": "^3.1.0",
-    "turbo": "^1.10.16",
-    "husky": "^8.0.0"
+    "prettier-config-custom": "*",
+    "turbo": "^1.10.16"
   }
 }

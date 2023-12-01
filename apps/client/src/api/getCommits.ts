@@ -1,6 +1,7 @@
 import axios from 'axios'
-import type {} from 'types'
+
+const serverPort = import.meta.env.SERVER_PORT
 
 export default function getCommits() {
-  return axios.get('http://localhost:3000/commits').then(res => res.data)
+  return axios.get(`http://localhost:${serverPort}/commits`).then(res => res.data)
 }
