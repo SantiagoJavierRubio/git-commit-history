@@ -48,6 +48,10 @@ pnpm dev
 
 And both client and server should be available at http://localhost: \<Your configured ports>
 
+<p align="center">
+<img src="screenshot.png" alt="client app screenshot" width="900" style="margin: auto"/>
+</p>
+
 # Techs used
 
 * [Turborepo](https://turbo.build/repo)
