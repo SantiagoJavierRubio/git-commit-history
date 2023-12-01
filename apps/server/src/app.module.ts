@@ -1,17 +1,17 @@
-import { Module } from '@nestjs/common'
-import { ConfigModule } from '@nestjs/config'
-import { CommitsModule } from './commits/commits.module'
-import config from 'config/config'
+import { Module } from "@nestjs/common";
+import { ConfigModule } from "@nestjs/config";
+import { CommitsModule } from "./commits/commits.module";
+import config from "config/config";
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [config]
+      load: [config],
     }),
-    CommitsModule
+    CommitsModule,
   ],
   controllers: [],
-  providers: []
+  providers: [],
 })
 export class AppModule {}
