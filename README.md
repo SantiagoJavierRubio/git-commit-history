@@ -52,6 +52,8 @@ pnpm dev
 
 And both client and server should be available at http://localhost:\<Your configured ports>
 
+[screenshot](screenshot.png)
+
 # Techs used
 
 * [Turborepo](https://turbo.build/repo)
