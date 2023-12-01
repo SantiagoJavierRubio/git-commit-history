@@ -1,6 +1,4 @@
-/* eslint-disable no-console */
 import { ChangeEvent, useState } from 'react'
-import { CommitListElement } from 'types'
 import {
   createColumnHelper,
   useReactTable,
@@ -11,11 +9,12 @@ import {
   getFilteredRowModel,
   type SortingState
 } from '@tanstack/react-table'
+import { ArrowBigLeft, ArrowBigRight, Search } from 'lucide-react'
+import type { CommitListElement } from 'types'
 
 import useDebounce from '@/hooks/useDebounce'
 import { AvatarCell, Cell, LinkCell } from './Cells'
-import { SortableHeader } from './Headers'
-import { Search } from 'lucide-react'
+import { SortableHeader, Header } from './Headers'
 
 const columnHelper = createColumnHelper<CommitListElement>()
 const columns = [
@@ -27,7 +26,7 @@ const columns = [
           ID
           </SortableHeader>
     ),
-    cell: props => <Cell>{props.getValue().substring(0, 7)}</Cell>
+    cell: props => <Cell id={props.getValue()} className='text-center'>{props.getValue().substring(0, 7)}</Cell>
   }),
   columnHelper.group({
     id: 'author',
@@ -48,7 +47,7 @@ const columns = [
           <SortableHeader
             sortingType='alphabetical'
             sortDirection={props.column.getIsSorted()}
-            className='text-center pr-16'>
+            className='text-left pr-16'>
               Author
           </SortableHeader>),
         cell: props => <Cell className='whitespace-nowrap'>{props.getValue()}</Cell>
@@ -60,7 +59,7 @@ const columns = [
   columnHelper.accessor('commit.message', {
     id: 'message',
     enableSorting: false,
-    header: () => <span>Message</span>,
+    header: () => <Header>Message</Header>,
     cell: props => (
       <Cell className='text-sm italic whitespace-pre-wrap leading-3'>
         {props.row.original.commit.message}
@@ -78,7 +77,7 @@ const columns = [
         </SortableHeader>
     ),
     cell: props => (
-            <Cell className='text-sm'>
+            <Cell className='text-sm text-center'>
               {new Date(props.getValue()).toLocaleDateString()}
             </Cell>
     )
@@ -115,7 +114,7 @@ export default function CommitTable({ commits }: { commits: CommitListElement[] 
 
   return (
     <>
-    <div className='' id='actions-top'>
+    <div className='flex items-center justify-between my-4 pr-2' id='actions-top'>
       <label
         htmlFor='filter'
         className='flex items-center justify-start gap-2 bg-bgLight w-fit focus-within:ring-2 ring-textLight px-2 py-1 rounded-lg'
@@ -131,7 +130,7 @@ export default function CommitTable({ commits }: { commits: CommitListElement[] 
         />
       </label>
       <p>
-        {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+        Page {table.getState().pagination.pageIndex + table.getPageCount() > 0 ? 1 : 0} of {table.getPageCount()}
       </p>
     </div>
       <table
@@ -157,10 +156,9 @@ export default function CommitTable({ commits }: { commits: CommitListElement[] 
             ))}
           </thead>
         <tbody>
-          {table.getRowModel().rows.map(row => (
+          {table.getRowModel().rows.length > 0 ? table.getRowModel().rows.map(row => (
             <tr
               key={row.id}
-              onClick={() => console.log(row.getValue('sha'))}
               className="bg-bgDark border-y-2 border-textLight hover:bg-bgMedium/70"
             >
               {row.getVisibleCells().map(cell => (
@@ -169,18 +167,36 @@ export default function CommitTable({ commits }: { commits: CommitListElement[] 
                 </td>
               ))}
             </tr>
-          ))}
+          )) : (
+          <td colSpan={20}>
+            <Cell className='bg-bgDark text-center py-8 text-xl'>No results</Cell>
+          </td>
+          )}
         </tbody>
       </table>
-      <div className='mt-4' id='actions-bottom'>
-        <button disabled={!table.getCanPreviousPage()} onClick={() => table.previousPage()}>previous</button>
-        <button disabled={!table.getCanNextPage()} onClick={() => table.nextPage()}>next</button>
-        <label htmlFor='pageSize'>Size</label>
-        <select id="pageSize" name="page-size" onChange={(e) => table.setPageSize(parseInt(e.target.value))}>
-          <option defaultChecked value={10}>10</option>
-          <option value={20}>20</option>
-          <option value={50}>50</option>
-        </select>
+      <div className='mt-4 w-full flex items-center justify-end gap-8 pr-2' id='actions-bottom'>
+        <label htmlFor='pageSize' className='flex items-center gap-4'>
+          <p>Show</p>
+          <select id="pageSize" name="page-size" onChange={(e) => table.setPageSize(parseInt(e.target.value))}>
+            <option defaultChecked value={10}>10</option>
+            <option value={20}>20</option>
+            <option value={50}>50</option>
+          </select>
+        </label>
+        <div id="page-navigation" className='flex items-center gap-6'>
+          <button
+          className='flex items-center gap-1 p-1 bg-bgLight disabled:opacity-25 rounded-lg'
+            disabled={!table.getCanPreviousPage()}
+            onClick={() => table.previousPage()}>
+              <ArrowBigLeft size={24} />
+            </button>
+          <button
+          className='flex items-center gap-1 p-1 bg-bgLight disabled:opacity-25 rounded-lg'
+            disabled={!table.getCanNextPage()}
+            onClick={() => table.nextPage()}>
+              <ArrowBigRight size={24} />
+            </button>
+        </div>
       </div>
     </>
   )
