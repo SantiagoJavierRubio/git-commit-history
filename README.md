@@ -1,7 +1,3 @@
-<p align="right">
-<img src="apps/client/public/android-icon-72x72.png" width="72" alt="app icon" >
-</p>
-
 # Git commit history
 ### Fullstack webapp to show commit history of a single repo. Built with NestJS and React
 
