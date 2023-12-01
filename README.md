@@ -22,7 +22,7 @@ copy .env.example .env
 > 
 > **SERVER_PORT** --> localhost port to run nest app -> **required**
 > 
-> **GITHUB_TOKEN** --> your own github token [(More info)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) -> **required**
+> *GITHUB_TOKEN* --> your own github token in case you need it [(More info)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic)
 >
 > *REPO_OWNER* --> leave empty to use this repository's data, else add the owner name of the repo you want to use
 >
